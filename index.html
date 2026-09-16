@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+
+<title>মামুন স্যারের স্মরণীয় ডায়লগ | Roman Mazumder</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+  --bg:#050b14;
+  --bg2:#081525;
+  --card:rgba(10,25,43,.78);
+  --line:rgba(56,189,248,.20);
+  --cyan:#22d3ee;
+  --blue:#38bdf8;
+  --green:#2dd4bf;
+  --text:#eef8ff;
+  --muted:#9bb0c5;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"Hind Siliguri",Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(34,211,238,.10),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(56,189,248,.08),transparent 28%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+}
+
+button,input{
+  font:inherit;
+}
+
+/* NAVIGATION */
+
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  backdrop-filter:blur(18px);
+  background:rgba(4,11,20,.88);
+  border-bottom:1px solid var(--line);
+}
+
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  color:white;
+  font-size:21px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.brand span{
+  color:var(--cyan);
+}
+
+.nav-links{
+  display:flex;
+  gap:5px;
+  list-style:none;
+}
+
+.nav-links button{
+  border:0;
+  background:transparent;
+  color:#c6d7e8;
+  padding:10px 13px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.nav-links button:hover,
+.nav-links button.active{
+  color:white;
+  background:rgba(34,211,238,.10);
+}
+
+/* PAGE */
+
+.page{
+  display:none;
+  max-width:1200px;
+  margin:auto;
+  padding:65px 22px 100px;
+  min-height:calc(100vh - 70px);
+  animation:fade .4s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* HOME */
+
+.home{
+  min-height:calc(100vh - 70px);
+  display:none;
+  align-items:center;
+}
+
+.home.active{
+  display:flex;
+}
+
+.home-content{
+  max-width:850px;
+}
+
+.eyebrow{
+  display:inline-block;
+  padding:8px 15px;
+  border:1px solid var(--line);
+  border-radius:30px;
+  color:var(--cyan);
+  background:rgba(34,211,238,.06);
+  margin-bottom:22px;
+}
+
+.home h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(44px,7vw,78px);
+  line-height:1.08;
+  margin-bottom:18px;
+}
+
+.home h1 span{
+  color:var(--cyan);
+}
+
+.home h2{
+  font-size:28px;
+  margin-bottom:18px;
+}
+
+.lead{
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.9;
+  max-width:750px;
+}
+
+.quote{
+  margin:28px 0;
+  padding:18px 22px;
+  border-left:4px solid var(--cyan);
+  border-radius:0 15px 15px 0;
+  background:rgba(10,25,43,.65);
+  color:#dff9ff;
+  font-size:19px;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:0;
+  padding:13px 21px;
+  border-radius:12px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  transition:.25s;
+}
+
+.primary{
+  color:#03101b;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  font-weight:700;
+}
+
+.primary:hover{
+  transform:translateY(-3px);
+}
+
+.secondary{
+  color:#d9f9ff;
+  border:1px solid var(--line);
+  background:rgba(10,25,43,.6);
+}
+
+/* HEADINGS */
+
+.section-head{
+  margin-bottom:30px;
+}
+
+.section-head h1{
+  font-family:"Playfair Display",serif;
+  font-size:42px;
+  margin-bottom:8px;
+}
+
+.section-head h1 span{
+  color:var(--cyan);
+}
+
+.section-head p{
+  color:var(--muted);
+}
+
+/* DIALOGUES */
+
+.toolbar{
+  display:flex;
+  gap:12px;
+  margin-bottom:22px;
+}
+
+.search{
+  position:relative;
+  flex:1;
+}
+
+.search input{
+  width:100%;
+  padding:14px 17px;
+  border:1px solid var(--line);
+  outline:none;
+  border-radius:13px;
+  background:rgba(8,22,38,.82);
+  color:white;
+}
+
+.dialogue-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+}
+
+.dialogue{
+  padding:19px 21px;
+  border:1px solid rgba(56,189,248,.12);
+  border-left:3px solid var(--green);
+  border-radius:14px;
+  background:linear-gradient(
+    90deg,
+    rgba(8,28,48,.9),
+    rgba(7,18,31,.72)
+  );
+  color:#e8f0f7;
+  font-size:16px;
+  line-height:1.7;
+  transition:.25s;
+}
+
+.dialogue:hover{
+  transform:translateY(-2px);
+  border-color:rgba(34,211,238,.35);
+}
+
+.copy{
+  margin-top:12px;
+  padding:7px 12px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:transparent;
+  color:var(--muted);
+  cursor:pointer;
+  font-size:13px;
+}
+
+.copy:hover{
+  color:var(--cyan);
+}
+
+/* CARDS */
+
+.card{
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.creator-name{
+  font-family:"Playfair Display",serif;
+  font-size:48px;
+  margin-bottom:8px;
+}
+
+.role{
+  color:var(--cyan);
+  font-size:20px;
+  margin-bottom:22px;
+}
+
+.info{
+  color:#c8d7e5;
+  line-height:1.9;
+}
+
+.details{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.detail{
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:rgba(4,14,25,.5);
+}
+
+.detail small{
+  display:block;
+  color:var(--muted);
+  margin-bottom:5px;
+}
+
+.detail a{
+  color:#eaf9ff;
+  text-decoration:none;
+}
+
+/* MUSIC */
+
+.music-list{
+  display:grid;
+  gap:17px;
+}
+
+.music-card{
+  padding:24px;
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:20px;
+}
+
+.music-card h3{
+  color:var(--cyan);
+  margin-bottom:14px;
+}
+
+audio{
+  width:100%;
+}
+
+.music-note{
+  margin-top:20px;
+  color:var(--muted);
+  line-height:1.8;
+  padding:17px;
+  border:1px solid var(--line);
+  border-radius:13px;
+}
+
+/* THANK YOU */
+
+.thanks{
+  min-height:calc(100vh - 70px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.thanks.active{
+  display:flex;
+}
+
+.thanks-box{
+  width:100%;
+  max-width:850px;
+  padding:65px 30px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:var(--card);
+}
+
+.thanks-box h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(48px,8vw,82px);
+  margin-bottom:18px;
+}
+
+.thanks-box h1 span{
+  color:var(--cyan);
+}
+
+.thanks-box p{
+  color:#c9d9e7;
+  line-height:1.9;
+  font-size:18px;
+}
+
+.credit{
+  margin:28px auto 12px;
+  display:inline-block;
+  padding:12px 18px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  color:var(--cyan);
+  font-weight:700;
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid var(--line);
+  background:rgba(3,10,18,.88);
+  padding:25px 20px;
+  text-align:center;
+  color:#8ea4b8;
+  line-height:1.8;
+}
+
+footer b{
+  color:#dffaff;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .nav-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav-links{
+    width:100%;
+    overflow-x:auto;
+  }
+
+  .nav-links button{
+    white-space:nowrap;
+  }
+
+  .dialogue-list{
+    grid-template-columns:1fr;
+  }
+
+  .details{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:560px){
+
+  .page{
+    padding:45px 15px 80px;
+  }
+
+  .home h1{
+    font-size:45px;
+  }
+
+  .section-head h1{
+    font-size:34px;
+  }
+
+  .creator-name{
+    font-size:36px;
+  }
+
+  .card{
+    padding:23px;
+  }
+
+  .toolbar{
+    display:block;
+  }
+
+  .search{
+    margin-bottom:10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header class="navbar">
+
+<div class="nav-inner">
+
+<div class="brand" onclick="showPage('home')">
+Roman <span>Mazumder</span>
+</div>
+
+<nav class="nav-links">
+
+<button class="active" data-page="home">
+Home
+</button>
+
+<button data-page="dialogues">
+Dialogues
+</button>
+
+<button data-page="creator">
+Creator
+</button>
+
+<button data-page="contact">
+Contact
+</button>
+
+<button data-page="music">
+Music
+</button>
+
+<button data-page="thanks">
+Thank You
+</button>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<main>
+
+<!-- HOME -->
+
+<section class="page home active" id="home">
+
+<div class="home-content">
+
+<div class="eyebrow">
+Class Ten Memories
+</div>
+
+<h1>
+মামুন স্যারের
+<span>স্মরণীয় ডায়লগ</span>
+</h1>
+
+<h2>
+একটি ছোট্ট স্মৃতির সংগ্রহ
+</h2>
+
+<p class="lead">
+শ্রেণিকক্ষের কিছু স্মরণীয় কথা, মজার মুহূর্ত
+এবং আমাদের Class Ten-এর কিছু unforgettable memories
+এক জায়গায় রাখা হয়েছে।
+</p>
+
+<div class="quote" id="quote">
+“কথা না, কথা না, শুনে পড়ো।”
+</div>
+
+<div class="buttons">
+
+<button class="btn primary"
+onclick="showPage('dialogues')">
+ডায়লগ দেখুন
+</button>
+
+<button class="btn secondary"
+onclick="showPage('music')">
+Music
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DIALOGUES -->
+
+<section class="page" id="dialogues">
+
+<div class="section-head">
+
+<h1>
+স্যারের <span>ডায়লগসমূহ</span>
+</h1>
+
+<p>
+সংগৃহীত স্মরণীয় ডায়লগ
+</p>
+
+</div>
+
+<div class="toolbar">
+
+<div class="search">
+
+<input
+id="search"
+type="search"
+placeholder="ডায়লগ খুঁজুন..."
+>
+
+</div>
+
+</div>
+
+<div class="dialogue-list" id="dialogueList"></div>
+
+</section>
+
+
+<!-- CREATOR -->
+
+<section class="page" id="creator">
+
+<div class="section-head">
+
+<h1>
+<span>Creator</span>
+</h1>
+
+<p>
+Website Creator
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="creator-name">
+<a href="https://romanmazumder70-svg.github.io/romanmazumder.github.com/">Roman Mazumder</a>
+</div>
+
+<div class="role">
+Web Developer
+</div>
+
+<p class="info">
+এই website-টি তৈরি করেছেন Roman Mazumder।
+এটি Class Ten-এর কিছু স্মরণীয় classroom
+dialogue ও memories এক জায়গায় সংরক্ষণ করার
+জন্য তৈরি করা হয়েছে।
+</p>
+
+<div class="details">
+
+<div class="detail">
+<small>Name</small>
+<b>Roman Mazumder</b>
+</div>
+
+<div class="detail">
+<small>Profession</small>
+<b>Web Developer</b>
+</div>
+
+<div class="detail">
+<small>Credit</small>
+<b>Gone on Class Ten</b>
+</div>
+
+<div class="detail">
+<small>Creator</small>
+<b>Roman Mazumder</b>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="page" id="contact">
+
+<div class="section-head">
+
+<h1>
+<span>Contact</span>
+</h1>
+
+<p>
+Roman Mazumder-এর যোগাযোগের তথ্য
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="creator-name">
+Roman Mazumder
+</div>
+
+<div class="details">
+
+<div class="detail">
+
+<small>Email</small>
+
+<a href="mailto:romanmazumder70@email.com">
+romanmazumder70@email.com
+</a>
+
+</div>
+
+<div class="detail">
+
+<small>Phone</small>
+
+<a href="tel:+8801871975817">
++8801871975817
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MUSIC -->
+
+<section class="page" id="music">
+
+<div class="section-head">
+
+<h1>
+<span>Music</span>
+</h1>
+
+<p>
+Memories-এর সঙ্গে শোনার জন্য গান
+</p>
+
+<div class="music-list">
+
+<div class="music-card">
+
+<h3>Song 01</h3>
+
+<audio controls preload="metadata">
+    <source src="music/song1.mp4" type="audio/mp4">
+    তোমার browser audio support করে না।
+</audio>
+
+</div>
+
+
+<div class="music-card">
+
+<h3>Song 02</h3>
+
+<audio controls preload="metadata">
+    <source src="music/song2.mp4" type="audio/mp4">
+    তোমার browser audio support করে না।
+</audio>
+
+</div>
+
+
+<div class="music-card">
+
+<h3>Song 03</h3>
+
+<audio controls preload="metadata">
+    <source src="music/song3.mp4" type="audio/mp4">
+    তোমার browser audio support করে না।
+</audio>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- THANK YOU -->
+
+<section class="page thanks" id="thanks">
+
+<div class="thanks-box">
+
+<h1>
+Thank <span>You</span>
+</h1>
+
+<p>
+স্যারের ডায়লগগুলো দেখার জন্য ধন্যবাদ।
+</p>
+
+<div class="credit">
+Credit gone on Class Ten
+</div>
+
+<p>
+বি.দ্রু. Don't take serious only for fun
+</p>
+
+<p style="margin-top:25px;color:#22d3ee;font-weight:700;">
+Creator : Roman Mazumder
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© <b>Roman Mazumder</b> — All Rights Reserved.
+
+<br>
+
+বি.দ্রু. Don't take serious only for fun
+
+</footer>
+
+
+<script>
+
+/* ===============================
+   ORIGINAL DIALOGUES
+   =============================== */
+
+const dialogues = [
+
+"কথা না, কথা না, শুনে পড়ো।",
+
+"চোখ নিচে।",
+
+"টেবিলের পায়া ভেঙে পিটাবো।",
+
+"পিটাতে পিটাতে কাত করে ফেলবো।",
+
+"পিটানো শুরু করলে আর থামবো না।",
+
+"চুপ, ননসেন্স কাহাকার!",
+
+"আমি এইসব ম্যাথ নিজে নিজে শিখেছি, কোনো ওস্তাদের কাছে শিখিনি।",
+
+"দুইটা ডিম খেয়ে পিটাবো।",
+
+"৩৫০ টি এমসিকিউ করে নিয়ে আসবে, তার থেকে দুইটা কমন পারবে।",
+
+"তোমরা সবাই আমার বন্ধু নিজামউদ্দিনের মত হতে চাও না?",
+
+"আমি ক্ষুদ্র পাপী মামুন।",
+
+"বিনয়ের সাথে বলছি।",
+
+"অহংকারী হয়ে গেছো!",
+
+"জি বাবা বললেন (ফয়জান ও আদিল)।",
+
+"মায়ের হাতের খাবার খাবা।",
+
+"সকল শিক্ষককে আমি ২৫,০০০ টাকা খরচ করে আমার নিজ বাসায় ছাদে খাবার খাইয়েছি।",
+
+"আমি একজন চা-প্রিয় মানুষ।",
+
+"শার্ট খুলে পিটাবো।",
+
+"মায়ের সেবা করবো।",
+
+"আমি আমার স্টুডেন্টদের পিটাতে পিটাতে শুয়ে ফেলেছি, শুয়ে পড়ার পর পা দিয়ে পাড়া দিয়েছি।",
+
+"তোমরা আমার আগের রূপে ফিরে আসতে আমাকে বাধ্য করো না।",
+
+"আমি ৮৮ ইয়ার প্রাস মামুন।",
+
+"আমি একজন খাওয়া-দাওয়া প্রিয় মানুষ।",
+
+"শার্ট খুলে ভেতরে ঢুকে ফেলবো, বুকে আসো।",
+
+"আমি ওয়াদা দিলাম কালকে বাড়ির কাজ দেখবো।",
+
+"আজকে শুধু তোমাদের জন্য আমাকে ক্যান্টিনের খাবার খেতে হলো।",
+
+"বুকে আসো।",
+
+"চুলগুলো এইটুকু—মানে এত ছোট!",
+
+"আমি ক্ষুধা সহ্য করতে পারি না।",
+
+"পড়ালেখার একটা জাগা তৈরি করো বাবা।",
+
+"এক গ্লাস পানি নিয়ে আসো, গরম হলে আরো ভালো হবে (ফ্যান্টাস্টিক)।",
+
+"তোমাদের যে ১২০০ টাকা খরচ করে দুই খাওয়ালাম, আমি কি একবারও বলেছি কত টাকা খরচ হয়েছে?",
+
+"জীবনে আমি কখনো কারো কাছ থেকে কথা শুনিনি, শুধু তোমাদের জন্য আজকে কথা শুনতে হলো।",
+
+"আমার সবগুলো অংক তিনবার করে আনবে—দুবার রাফ খাতায় এবং একবার নোট খাতায়।",
+
+"জেসি তোর ধইরা সেচি (হেঁচেছি)!",
+
+"জাহিদ তুমি একজন রঙ হারালে।",
+
+"কেয়ামত হলেও এক্সাম মিস হবে না।",
+
+"আমার জন্য দুটি ডিম নিয়ে আসবে।",
+
+"আমি তোমাদের প্রিয় মামুন স্যার।",
+
+"সাব্বির স্যারকে আমি শুয়ে পিটিয়েছি।",
+
+"আন্তরিক হবা বাবা।",
+
+"বাম হাত দিয়ে নিলে কেন পুরস্কার পাবে না?",
+
+"কালকে শার্ট খুলে স্কুলে আসবা।",
+
+"তুমি পড়ার টেবিলটাকে সুন্দর করে রাখো, জীবনটাকে সুন্দর করো না কেন?",
+
+"আপা কেন যে এত কষ্ট করেন!",
+
+"আমার মেয়ে এসএসসি পরীক্ষায় জিপিএ ৫ পেয়েছে, তাও আমি ওকে ভোর পাঁচটায় উঠিয়ে দেই।"
+
+];
+
+
+/* ===============================
+   PAGE SYSTEM
+   =============================== */
+
+const navButtons =
+document.querySelectorAll(".nav-links button");
+
+const pages =
+document.querySelectorAll(".page");
+
+
+function showPage(page){
+
+pages.forEach(p=>{
+p.classList.remove("active");
+});
+
+const target =
+document.getElementById(page);
+
+if(target){
+target.classList.add("active");
+}
+
+navButtons.forEach(button=>{
+button.classList.toggle(
+"active",
+button.dataset.page===page
+);
+});
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* NAVIGATION */
+
+navButtons.forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+showPage(button.dataset.page);
+
+});
+
+});
+
+
+/* ===============================
+   DIALOGUE LIST
+   =============================== */
+
+const list =
+document.getElementById("dialogueList");
+
+
+function renderDialogues(){
+
+list.innerHTML="";
+
+dialogues.forEach((text,index)=>{
+
+const item =
+document.createElement("article");
+
+item.className="dialogue";
+
+item.innerHTML=`
+
+<div>${escapeHTML(text)}</div>
+
+<button class="copy"
+onclick="copyText(${index})">
+Copy
+</button>
+
+`;
+
+list.appendChild(item);
+
+});
+
+}
+
+
+function escapeHTML(text){
+
+return text.replace(/[&<>"']/g,function(char){
+
+return {
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[char];
+
+});
+
+}
+
+
+/* COPY */
+
+async function copyText(index){
+
+try{
+
+await navigator.clipboard.writeText(
+dialogues[index]
+);
+
+alert("Dialogue copied");
+
+}catch(error){
+
+alert("Copy করা যায়নি");
+
+}
+
+}
+
+
+/* SEARCH */
+
+document
+.getElementById("search")
+.addEventListener("input",function(){
+
+const query =
+this.value.trim().toLowerCase();
+
+const items =
+document.querySelectorAll(".dialogue");
+
+items.forEach((item,index)=>{
+
+const text =
+dialogues[index].toLowerCase();
+
+item.style.display =
+!query || text.includes(query)
+? ""
+: "block";
+
+});
+
+});
+
+
+/* ===============================
+   HOME QUOTE
+   =============================== */
+
+let quoteIndex=0;
+
+setInterval(()=>{
+
+quoteIndex=
+(quoteIndex+1)%dialogues.length;
+
+document.getElementById("quote")
+.textContent=
+"“"+dialogues[quoteIndex]+"”";
+
+},5000);
+
+
+/* INITIALIZE */
+
+renderDialogues();
+
+</script>
+
+</body>
+</html>
